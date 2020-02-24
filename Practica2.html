@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Objecto navigtor</title>
+    <style>
+        .parrafos{
+            font-size: 30px;
+
+        }
+        #boton{
+            color:blue;
+            background-color: cadetblue;
+            font-size: 30px;
+        }
+        .texto1{
+            border:rgb(0, 0, 0) solid 1px;
+        }
+    </style>
+</head>
+<body>
+    <h1> Ejemplo navigator</h1>
+    <button id="boton" onclick="obtieneDatos()">obtiene datos del navegador</button>
+    <p class="parrafos">Este es un parrafo2</p>
+
+    <ul id="navegador">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+    var navegador = document.getElementById("navegador");
+
+    var datos = document.getElementsByTagName("li");
+
+    function obtieneDatos(){
+
+        console.log( "Nombre del navegador:" + navigator.appCodeName);
+        console.log("Version del navegador:" + navigator.appVersion);
+        console.log("Estatus del internet:" + navigator.onLine);
+        console.log("Nombre del navegador:" + navigator.platform);
+        console.log("Estatus de inter:" + navigator.onLine);
+    }
+
+
+    </script>
+</body>
+</html>
