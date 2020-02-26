@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apui Estatica de google</title>
+</head>
+<body>
+    <button onclick="obtieneUbicacion()">Obtener ubicación</button>
+    <div id="mapa" style="padding-left: 50px; border: #CCC 10px solid;background-color: blue; width: 720px; height: 350px;">
+    </div>
+    <script>
+        function obtieneUbicacion(){
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(muestraPosicion);
+            }
+            else{
+                alert("No")
+
+            }
+            function muestraPosicion(posicion){
+                var coordenadas = posicion.coords.latitude + ","+ posicion.coords.longitude;
+        console.log(coordenadas);
+        var imagenurl = "https://maps.googleapis.com/maps/api/staticmap?center="+ coordenadas +"&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&key=AIzaSyCsMYDTaWc3Sr5_WUw2dNySgVHOd1l-PxI&callback=initMap"
+        document.getElementById("mapa").innerHTML = "<img src =" + imagenurl + ">";
+        }
+        }
+        
+    </script>
+    
+</body>
+</html>
