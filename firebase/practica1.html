@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-firestore.js"></script>
+    <style>
+      body{
+          background-color: rgb(190, 190, 255);
+      }
+      #lista{
+        background-color: rgb(192, 255, 190);
+      }
+  </style>
+  </head>
+<body >
+  <div class = "container-fluid">
+    <div class = "container">
+      <div class="row">
+        <div class="col-12">
+          <h1>Lista de  ' INVENTARIO '</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <form id="forma">
+            <input type="text" name="nombre" class="form-control" placeholder ="Nombre">
+            <input type="text" name="codigo" class="form-control" placeholder ="Codigo">
+            <button type="submit">Agregar</button>
+            <br>
+          </form>
+        </br>
+            <ul id="lista" class="list-group"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyCIwrIXOAePrtJ59DB9aJ0urkOSsMXN4YU",
+    authDomain: "proyectojdk66162.firebaseapp.com",
+    databaseURL: "https://proyectojdk66162.firebaseio.com",
+    projectId: "proyectojdk66162",
+    storageBucket: "proyectojdk66162.appspot.com",
+    messagingSenderId: "717498321729",
+    appId: "1:717498321729:web:d059f0ec0915c3141e6fc0"
+  };
+
+// Initialize Firebase LA CONEXIONNNNNNNNNNNNNNNNNNNNNN
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  const productoslista = document.querySelector("#lista");
+
+  const formulario = document.querySelector("#forma");
+
+  function renderProductos(doc){
+    console.log(doc.id);
+
+        let li = document.createElement("li");
+        let nombre = document.createElement("span");
+        let codigo = document.createElement("span");
+        let borrar = document.createElement("button");
+
+        nombre.textContent = doc.data().nombre + " ";
+        codigo.textContent = doc.data().codigo + " ";
+        borrar.textContent = "Borrar";
+
+        li.setAttribute("id", doc.id);
+        li.appendChild(nombre);
+        li.appendChild(codigo);
+        li.appendChild(borrar);
+
+        productoslista.appendChild(li);
+
+        borrar.addEventListener("click", (e) => {
+        let id = e.target.parentElement.getAttribute("id");
+        db.collection("productos").doc(id).delete();
+        });
+  }
+
+
+  formulario.addEventListener("submit", (e)=>{
+    e.preventDefault();  
+    db.collection("productos").add({
+       nombre : formulario.nombre.value,
+       codigo : formulario.codigo.value
+     });
+  });
+
+  db.collection("productos").onSnapshot(snapshot =>{
+    let changes = snapshot.docChanges();
+    changes.forEach( change =>{
+      if(change.type == "added"){
+        renderProductos(change.doc);
+      } else if(change.type == "removed"){
+        console.log(change.doc.id);
+        let valorid = document.getElementById(change.doc.id);
+        lista.removeChild(valorid);
+      }
+
+    });
+  });
+</script>
+
+</body>
+</html>
