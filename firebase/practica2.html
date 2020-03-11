@@ -22,6 +22,9 @@
         </div>
       </div>
     </div>
+    <form id="forma">
+        <button type="submit">Agregar</button>
+      </form>
   </div>
 
 <script>
@@ -52,11 +55,12 @@ var ubi2=null;
 ubi2=pos;
   });
 }
-window.onload=function() {
+formulario.addEventListener("submit", (e)=>{
+    e.preventDefault();  
     db.collection("ubicacioncliente").add({
        ubi : moverPosicion.ubi2
-     });	
-		}
+     });
+  });
 
 </script>
 <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&amp;callback=iniciaMapa">
