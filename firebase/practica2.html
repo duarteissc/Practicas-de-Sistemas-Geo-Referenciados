@@ -18,7 +18,7 @@
     <div class = "container">
       <div class="row">
         <div class="col-12">
-          <h1>CLIENTE</h1>
+          <h1 id="forma">CLIENTE</h1>
         </div>
       </div>
     </div>
@@ -41,6 +41,7 @@
   const db = firebase.firestore();
 
 
+  const formulario = document.querySelector("#forma");
 
   function moverPosicion() {
   navigator.geolocation.getCurrentPosition( posicion => {
