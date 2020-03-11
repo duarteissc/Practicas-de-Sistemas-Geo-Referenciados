@@ -46,7 +46,8 @@
 
   const formulario = document.querySelector("#forma");
 var ubi2=null;
-  function moverPosicion() {
+
+window.onload = function moverPosicion() {
   navigator.geolocation.getCurrentPosition( posicion => {
       var pos = {
         lat: posicion.coords.latitude,
