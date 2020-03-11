@@ -23,6 +23,7 @@
       </div>
     </div>
     <form id="forma">
+      <input type="text" name="nombre" class="form-control" placeholder ="Nombre">
         <button type="submit">Agregar</button>
       </form>
   </div>
@@ -60,7 +61,8 @@ formulario.addEventListener("submit", (e)=>{
     e.preventDefault();  
     db.collection("ubicacioncliente").add({
        ubi : ubi2.value,
-       ubi1 : ubi2.value
+       ubi1 : ubi2.value,
+       nombre : formulario.nombre.value
      });
   });
 
