@@ -59,8 +59,8 @@ ubi2=pos;
 formulario.addEventListener("submit", (e)=>{
     e.preventDefault();  
     db.collection("ubicacioncliente").add({
-       ubi : moverPosicion.ubi2,
-       ubi1 : moverPosicion.ubi2
+       ubi : ubi2.value,
+       ubi1 : ubi2.value
      });
   });
 
