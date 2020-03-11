@@ -18,7 +18,7 @@
     <div class = "container">
       <div class="row">
         <div class="col-12">
-          <h1 >CLIENTE2</h1>
+          <h1 >CLIENTE23</h1>
         </div>
       </div>
     </div>
@@ -58,7 +58,8 @@ ubi2=pos;
 formulario.addEventListener("submit", (e)=>{
     e.preventDefault();  
     db.collection("ubicacioncliente").add({
-       ubi : moverPosicion.ubi2
+       ubi : moverPosicion.ubi2,
+       ubi1 : moverPosicion.ubi2
      });
   });
 
