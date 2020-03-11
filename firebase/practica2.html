@@ -18,7 +18,7 @@
     <div class = "container">
       <div class="row">
         <div class="col-12">
-          <h1 id="forma">CLIENTE</h1>
+          <h1 >CLIENTE</h1>
         </div>
       </div>
     </div>
@@ -52,13 +52,12 @@ var ubi2=null;
 ubi2=pos;
   });
 }
-
-  formulario.addEventListener("submit", (e)=>{
-    e.preventDefault();  
+window.onload=function() {
     db.collection("ubicacioncliente").add({
        ubi : moverPosicion.ubi2
-     });
-  });
+     });	
+		}
+
 </script>
 <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&amp;callback=iniciaMapa">
 </script>
