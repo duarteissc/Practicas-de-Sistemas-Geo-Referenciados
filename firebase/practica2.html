@@ -65,7 +65,7 @@
   formulario.addEventListener("submit", (e)=>{
     e.preventDefault();  
     db.collection("ubicacioncliente").add({
-       nombre : values(ubi)
+       nombre : ubi.value
      });
   });
 
