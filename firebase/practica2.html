@@ -11,6 +11,9 @@
       body{
           background-color: rgb(190, 190, 255);
       }
+      #lista{
+        background-color: rgb(192, 255, 190);
+      }
   </style>
   </head>
 <body >
@@ -18,14 +21,21 @@
     <div class = "container">
       <div class="row">
         <div class="col-12">
-          <h1 >CLIENTE23</h1>
+          <h1>Lista de  ' INVENTARIO '</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <form id="forma">
+            <input type="text" name="nombre" class="form-control" placeholder ="Nombre">
+            <button type="submit">Agregar</button>
+            <br>
+          </form>
+        </br>
+            <ul id="lista" class="list-group"></ul>
         </div>
       </div>
     </div>
-    <form id="forma">
-      <input type="text" name="nombre" class="form-control" placeholder ="Nombre">
-        <button type="submit">Agregar</button>
-      </form>
   </div>
 
 <script>
@@ -44,30 +54,20 @@
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
 
+  const productoslista = document.querySelector("#lista");
 
   const formulario = document.querySelector("#forma");
-var ubi2=null;
 
-window.onload = function moverPosicion() {
-  navigator.geolocation.getCurrentPosition( posicion => {
-      var pos = {
-        lat: posicion.coords.latitude,
-        lng: posicion.coords.longitude
-      };
-ubi2=pos;
-  });
-}
-formulario.addEventListener("submit", (e)=>{
+
+
+  formulario.addEventListener("submit", (e)=>{
     e.preventDefault();  
     db.collection("ubicacioncliente").add({
-       ubi : ubi2.value,
-       ubi1 : ubi2.value,
        nombre : formulario.nombre.value
      });
   });
 
 </script>
-<script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&amp;callback=iniciaMapa">
-</script>
+
 </body>
 </html>
