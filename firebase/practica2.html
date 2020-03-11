@@ -42,21 +42,21 @@
 
 
   const formulario = document.querySelector("#forma");
-
+var ubi2=null;
   function moverPosicion() {
   navigator.geolocation.getCurrentPosition( posicion => {
       var pos = {
         lat: posicion.coords.latitude,
         lng: posicion.coords.longitude
       };
-
+ubi2=pos;
   });
 }
 
   formulario.addEventListener("submit", (e)=>{
     e.preventDefault();  
     db.collection("ubicacioncliente").add({
-       ubi : moverPosicion.pos
+       ubi : moverPosicion.ubi2
      });
   });
 </script>
