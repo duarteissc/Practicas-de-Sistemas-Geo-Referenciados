@@ -50,7 +50,8 @@
   };
 
 // Initialize Firebase LA CONEXIONNNNNNNNNNNNNNNNNNNNNN
-var ubi = "hola"
+
+  var ubi  = "holaaaaaaaaaaaaa" 
 
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
@@ -64,7 +65,7 @@ var ubi = "hola"
   formulario.addEventListener("submit", (e)=>{
     e.preventDefault();  
     db.collection("ubicacioncliente").add({
-       nombre : ubi
+       nombre : values(ubi)
      });
   });
 
