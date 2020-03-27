@@ -56,7 +56,7 @@
                                     let marker = new google.maps.Marker({
                                         map: map,
                                         position: new google.maps.LatLng(marcador.CapitalLatitude, marcador.CapitalLongitude),
-                                        title: marcador.CountryName + registro.cases
+                                        title: marcador.CountryName + registro.cases + registro.todayCases
                                     });
 
                                     marker.addListener('click', function() {
