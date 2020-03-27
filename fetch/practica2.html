@@ -19,7 +19,7 @@
 
         var paises = document.getElementById("paises");
 
-        fetch('datos.json')
+        fetch('https://corona.lmao.ninja/countries')
         .then(function(response) {
 
             response.json().then(function(datos) {
