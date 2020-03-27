@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Fetch4</title>
+    <title>Practica 4</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>
@@ -18,14 +18,7 @@
     </style>
   </head>
   <body>
-    <div class="container"  style="background-color: black;">
-        <div class="row">
-            <div class="col">
-
     <div id="map"></div>
-    </div>
-    </div>
-    </div>
     <script>
  
     var coordenadas = {
@@ -37,24 +30,14 @@
         center: coordenadas,
         zoom: 2
         }
-
- 
-
     function iniciaMapa() {
-
- 
         fetch('paises.json')
         .then(function(response) {
-
             response.json().then(function(datos) {
- 
                 const map = new google.maps.Map(document.getElementById('map'), propiedades);
 
                 console.log(datos);
-
                 datos.forEach( marcador => {
-
-
                     fetch('https://corona.lmao.ninja/countries')
                     .then(function(respuesta) {
 
@@ -80,23 +63,12 @@
                                     marker.addListener('click', function() {
                                         infowindow.open(map, marker);
                                     });
-
                                 }
-                                
-
                             });
-
                         });
-
-                    });
-                    
-
-
+                    });                 
                 });
-
-
             });
- 
         })
         .catch(function(error) {
             console.log('Hubo un problema con la petición Fetch:' + error.message);
