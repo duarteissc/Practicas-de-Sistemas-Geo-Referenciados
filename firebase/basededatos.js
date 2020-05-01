@@ -1,14 +1,16 @@
 var firebaseConfig = {
-    apiKey: "AIzaSyCIwrIXOAePrtJ59DB9aJ0urkOSsMXN4YU",
-    authDomain: "proyectojdk66162.firebaseapp.com",
-    databaseURL: "https://proyectojdk66162.firebaseio.com",
-    projectId: "proyectojdk66162",
-    storageBucket: "proyectojdk66162.appspot.com",
-    messagingSenderId: "717498321729",
-    appId: "1:717498321729:web:d059f0ec0915c3141e6fc0"
+  apiKey: "AIzaSyAe4RWSDNU3uYue7aIPTurX5a-AadRmyG8",
+  authDomain: "geo-01-8acbc.firebaseapp.com",
+  databaseURL: "https://geo-01-8acbc.firebaseio.com",
+  projectId: "geo-01-8acbc",
+  storageBucket: "geo-01-8acbc.appspot.com",
+  messagingSenderId: "191427279226",
+  appId: "1:191427279226:web:a01265311980b83802bec3",
+  measurementId: "G-D6QWFGPRRY"
   };
 
 // Initialize Firebase LA CONEXIONNNNNNNNNNNNNNNNNNNNNN
 
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
+
