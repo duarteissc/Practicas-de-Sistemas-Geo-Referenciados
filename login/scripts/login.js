@@ -1,10 +1,15 @@
 const listaloggedout = document.querySelectorAll('.logged-out');
-const listaloggedin = document.querySelectorAll('.logged-in');
-const datosdelacuenta = document.querySelector('.datosdelacuenta');
-
-const configurarMenu = (user) => {
+ const listaloggedin = document.querySelectorAll('.logged-in');
+ const datosdelacuenta = document.querySelector('.datosdelacuenta');
+ const configurarMenu2 = (user) => {
 if(user){
 
+    const html2 = `
+                <p>Nombre: ${ user.displayName }</p>
+                <p>Correo: ${ user.email}</p>
+                <img src="${ user.photoURL }" width="50px">
+            `;
+            datosdelacuenta.innerHTML = html2;
     db.collection('usuarios').doc(user.uid).get().then( doc =>{
         const html = `
         <p>Nombre: ${doc.data().nombre}</p>
@@ -16,6 +21,7 @@ if(user){
         ;
         datosdelacuenta.innerHTML = html;
     });
+
     listaloggedin.forEach( item => item.style.display = 'block');
     listaloggedout.forEach( item => item.style.display = 'none');
 }else{
@@ -33,11 +39,11 @@ const obtienePlatillos = (data) =>{
             const platillo = doc.data();
             const columna = `
             <div class="col-12 col-md-4">
-            <img src="imagenes/${platillo.imagenPortada}" alt="${platillo.nombre}">
+            <img src="login/imagenes/${platillo.imagenPortada}" alt="${platillo.nombre}">
             <p>${platillo.nombre}</p>
             <p>${platillo.numero1}</p>
             <p>${platillo.numero2}</p>
-            <p class="text-danger">$ ${platillo.precio}</p>
+            <p class="text-danger">si $ ${platillo.precio}</p>
             <a href ="https://www.paypal.me/grupohernandezalba/${platillo.precio}" target="_blank">
             <button class="btn btn-primary">Pagar Ahora</button>
             </a>

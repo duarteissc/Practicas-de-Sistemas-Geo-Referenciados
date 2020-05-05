@@ -3,7 +3,7 @@ auth.onAuthStateChanged( user =>{
         console.log('Usuario entró');
         db.collection('Restaurantes').onSnapshot(snapshot =>{
             obtienePlatillos(snapshot.docs);
-            configuraMenu(user);
+            configurarMenu2(user);
         }, err => {
             console.log(err.message);
         });
@@ -23,7 +23,8 @@ auth.onAuthStateChanged( user =>{
     else{
         console.log('Usuario salió');
         obtienePlatillos([]);
-        configuraMenu();
+        
+        configurarMenu2();
     }
 
 });
@@ -103,26 +104,6 @@ salir.addEventListener('click', (e) =>{
 
 
 
-entrarGoogle= ()=>{
-    var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider).then( function(result)
-    {
-        var token = result.credential.accessToken;
-        console.log(token);
-        var user = result.user;
-        let html = `
-        <p>Nombre: ${user.displayName}</p>
-        <p>Correo: ${user.email}</p>
-        <img src=" ${user.photoURL}">
-        `;
-        datosdelacuenta.innerHTML = html;
-        $('#ingresarModal').modal('hide');
-        formainfresar.reset();
-        formaingresar.querySelector('.error').innerHTML = "";
-    }).catch(function(error){
-console.log(error);
-    });
-}
 
 
 
