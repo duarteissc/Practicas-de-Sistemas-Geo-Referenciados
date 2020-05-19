@@ -1,12 +1,10 @@
 
 auth.onAuthStateChanged( user =>{
- 
-    if(user){
-        console.log('Usuario entró');
+  if(user){
+      console.log('Usuario adentro');
 
-        if(navigator.geolocation){
-
-            navigator.geolocation.getCurrentPosition( position =>{
+   if(navigator.geolocation){
+     navigator.geolocation.getCurrentPosition( position =>{
                 
 
                 db.collection('usuarios').doc(user.uid).update({
@@ -61,6 +59,7 @@ formaregistrate.addEventListener('submit',(e)=>{
         return db.collection('usuarios').doc(cred.user.uid).set({
             nombre: formaregistrate['rnombre'].value,
             telefono: formaregistrate['rtelefono'].value,
+            edad: formaregistrate['redad'].value,
             direccion: formaregistrate['rdireccion'].value
         });
 
